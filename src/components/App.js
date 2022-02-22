@@ -2,14 +2,36 @@ import React from "react";
 import Table from "./Table";
 
 // al ser un componente se pone en mayuscula
-class App extends React.Component { 
-    render(){
-      return (
-        <div className='container'>
-          <Table />
-        </div>
-      );
-    }
-  }
+class App extends React.Component {
+  state = {
+    characters: [
+      {
+        name: 'John',
+        job: 'Smither'
+      },
+      {
+        name: 'Clyde',
+        job: 'Carpenter'
+      },
+      {
+        name: 'Wanda',
+        job: 'Engineer'
+      },
+      {
+        name: 'Claudia',
+        job: 'Manager'
+      },
+    ],
+  };
 
-  export default App;
+  removeCharacter = index => {
+    const { characters } = this.state;
+    this.setState({ 
+      characters:characters.filter((char,i) => {
+        return i !== index; 
+      }),
+    })
+  };
+}
+
+export default App;
